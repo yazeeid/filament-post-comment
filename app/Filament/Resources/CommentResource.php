@@ -22,6 +22,7 @@ use App\Filament\Resources\CommentResource\Pages;
 use App\Filament\Resources\CommentResource\Pages\ViewComment;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CommentResource\RelationManagers;
+use Filament\Tables\Filters\SelectFilter;
 use Webbingbrasil\FilamentCopyActions\Tables\Actions\CopyAction;
 use Webbingbrasil\FilamentCopyActions\Tables\CopyableTextColumn;
 
@@ -101,14 +102,17 @@ class CommentResource extends Resource
                 TextColumn::make('post.description')
                     ->label('Post')
                     ->limit(35)
-                    ->sortable(),
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('comment')
                     ->label('Comment')
                     ->limit(35)
-                    ->sortable(),
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('user.name')
                     ->label('Comment Creator')
-                    ->sortable(),
+                    ->sortable()
+                    ->searchable(),
                     TextColumn::make('created_at')
                     ->since()
                     ->toggleable(isToggledHiddenByDefault: true)
@@ -119,7 +123,19 @@ class CommentResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('Post')
+                ->relationship('post','description')
+                ->searchable()
+                ->preload()
+                ->label('Post Filter')
+                ->indicator('Post'),
+
+                SelectFilter::make('User')
+                ->relationship('user','name')
+                ->searchable()
+                ->preload()
+                ->label('User Filter')
+                ->indicator('User'),
             ])
             ->actions([
                 CopyAction::make()
