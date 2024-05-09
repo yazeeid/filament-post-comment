@@ -22,6 +22,7 @@ use App\Filament\Resources\PostResource\RelationManagers;
 use Webbingbrasil\FilamentCopyActions\Tables\Actions\CopyAction;
 use Webbingbrasil\FilamentCopyActions\Tables\CopyableTextColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 
 class PostResource extends Resource
 {
@@ -95,10 +96,12 @@ class PostResource extends Resource
                 CopyableTextColumn::make('description')
                     ->label('Post')
                     ->limit(35)
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('user.name')
                     ->label('Post Creator')
-                    ->sortable(),
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('comments_count')
                     ->counts('comments')
                     ->label('Total Comments'),
@@ -112,7 +115,13 @@ class PostResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('User')
+                ->relationship('user','name')
+                ->searchable()
+                ->preload()
+                ->label('User Filter')
+                ->indicator('User'),
+
             ])
             ->headerActions([
                 // ...
