@@ -13,7 +13,7 @@ class PostPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasPermissionTo("View Any Post");
+        return $user->hasPermissionTo("view Any Post");
     }
 
     /**
@@ -21,7 +21,7 @@ class PostPolicy
      */
     public function view(User $user): bool
     {
-        return $user->hasPermissionTo("View Post");
+        return $user->hasPermissionTo("view Post");
     }
 
     /**
@@ -29,7 +29,7 @@ class PostPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasPermissionTo("Create Post");
+        return $user->hasPermissionTo("create Post");
     }
 
     /**
@@ -37,7 +37,7 @@ class PostPolicy
      */
     public function update(User $user): bool
     {
-        return $user->hasPermissionTo("Update Post");
+        return $user->hasPermissionTo("update Post");
     }
 
     /**
@@ -45,7 +45,7 @@ class PostPolicy
      */
     public function delete(User $user): bool
     {
-        return $user->hasPermissionTo("Delete Post");
+        return $user->hasPermissionTo("delete Post");
     }
 
     /**
@@ -53,7 +53,7 @@ class PostPolicy
      */
     public function restore(User $user): bool
     {
-        return $user->hasPermissionTo("Restore Post");
+        return $user->hasPermissionTo("restore Post");
     }
 
     /**
@@ -61,6 +61,6 @@ class PostPolicy
      */
     public function forceDelete(User $user): bool
     {
-        return $user->hasPermissionTo("ForceDelete Post");
+        return $user->hasPermissionTo("force Delete Post");
     }
 }

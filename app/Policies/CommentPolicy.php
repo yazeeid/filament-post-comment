@@ -13,7 +13,7 @@ class CommentPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasPermissionTo("View Any Comment");
+        return $user->hasPermissionTo("view Any Comment");
     }
 
     /**
@@ -21,7 +21,7 @@ class CommentPolicy
      */
     public function view(User $user, Comment $comment): bool
     {
-        return $user->hasPermissionTo("View Comment");
+        return $user->hasPermissionTo("view Comment");
     }
 
     /**
@@ -29,7 +29,7 @@ class CommentPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasPermissionTo("Create Comment");
+        return $user->hasPermissionTo("create Comment");
     }
 
     /**
@@ -37,7 +37,7 @@ class CommentPolicy
      */
     public function update(User $user, Comment $comment): bool
     {
-        return $user->hasPermissionTo("Update Comment");
+        return $user->hasPermissionTo("update Comment");
     }
 
     /**
@@ -45,7 +45,7 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment): bool
     {
-        return $user->hasPermissionTo("Delete Comment");
+        return $user->hasPermissionTo("delete Comment");
     }
 
     /**
@@ -53,7 +53,7 @@ class CommentPolicy
      */
     public function restore(User $user, Comment $comment): bool
     {
-        return $user->hasPermissionTo("Restore Comment");
+        return $user->hasPermissionTo("restore Comment");
     }
 
     /**
@@ -61,7 +61,7 @@ class CommentPolicy
      */
     public function forceDelete(User $user, Comment $comment): bool
     {
-        return $user->hasPermissionTo("forceDelete Comment");
+        return $user->hasPermissionTo("force Delete Comment");
     }
 
 
