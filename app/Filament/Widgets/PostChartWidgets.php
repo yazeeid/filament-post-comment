@@ -10,8 +10,6 @@ use Flowframe\Trend\TrendValue;
 class PostChartWidgets extends ChartWidget
 {
     protected static ?int $sort = 2;
-
-
     protected static ?string $heading = 'Post chart';
     protected static string $color = 'success';
     protected static ?string $pollingInterval = '10s';
